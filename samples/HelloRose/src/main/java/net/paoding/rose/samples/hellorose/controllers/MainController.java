@@ -8,6 +8,6 @@ public class MainController {
 
     @Get("")
     public String main() {
-        return "redirect:/HelloRose/world";
+        return "redirect:/world";
     }
 }

@@ -1,31 +1,29 @@
 package net.paoding.rose.samples.hellorose.controllers;
 
-import net.paoding.rose.web.Invocation;
-import net.paoding.rose.web.annotation.Param;
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
+import net.paoding.rose.web.portal.Portal;
 
 @Path("world")
 public class WorldController {
 
-    private String worlds = "heaven,earth,hell";
 
     @Get("")
-    public String index() {
-        return "@Every Thing is OK. <p><a href=\"/HelloRose/world/list\">list worlds</a>";
+    public String index(Portal p) {
+    	p.addWindow("p1", "/world/wp1");
+        p.addWindow("p2", "/world/wp2");
+        return "world";
     }
 
-    @Get("list")
-    public String list(Invocation inv) {
-        inv.addModel("worlds", worlds.split(","));
-        return "world-list"; // refer: views/world-list.vm
-    }
+	
+	@Get("/wp1")
+	public String portal1() {
+		return "@this is p1";
+	}
 
-    @Get("prefix-{name}")
-    public String show(Invocation inv, @Param("name") String name) {
-        int index = worlds.indexOf(name);
-        inv.addModel("index", index);
-        inv.addModel("name", name);
-        return "world-show";// refer: views/world-show.vm
-    }
+	@Get("/wp2")
+	public String portal2() {
+		return "@this is p2";
+	}
+   
 }
