@@ -22,9 +22,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.springframework.stereotype.Component;
-
 import net.paoding.rose.web.ControllerInterceptor;
+
+import org.springframework.stereotype.Component;
 
 /**
  * {@link Intercepted}用于配合{@link ControllerInterceptor}

@@ -15,14 +15,6 @@
  */
 package net.paoding.rose.web.var;
 
-import net.paoding.rose.util.Base64;
-import net.paoding.rose.util.PlaceHolderUtils;
-import net.paoding.rose.web.Invocation;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.util.Assert;
-
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,6 +26,14 @@ import java.util.StringTokenizer;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+
+import net.paoding.rose.util.Base64;
+import net.paoding.rose.util.PlaceHolderUtils;
+import net.paoding.rose.web.Invocation;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.util.Assert;
 
 /**
  * 

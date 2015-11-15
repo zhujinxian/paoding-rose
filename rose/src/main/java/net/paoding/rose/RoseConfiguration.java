@@ -15,15 +15,18 @@ package net.paoding.rose;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.velocity.VelocityAutoConfiguration;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -33,14 +36,14 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@EnableAutoConfiguration(exclude = { VelocityAutoConfiguration.class })
+@ComponentScan
 public class RoseConfiguration {
 	@Bean
-	public FilterRegistrationBean intiRose() {
+	public FilterRegistrationBean intiRose(@Value("${rose-urls:/*}")String[] urls) {
 		FilterRegistrationBean registrationBean = new FilterRegistrationBean();
 		RoseFilter roseFilter = new RoseFilter();
 		registrationBean.setFilter(roseFilter);
-		registrationBean.setUrlPatterns(getUrlPatterns());
+		registrationBean.setUrlPatterns(Arrays.asList(urls));
 		registrationBean.setOrder(1);
 		return registrationBean;
 	}
@@ -59,11 +62,5 @@ public class RoseConfiguration {
 	protected void customizeSeverContainer(ConfigurableEmbeddedServletContainer container) {
 		URL url = this.getClass().getResource("/");
 		container.setDocumentRoot(new File(url.getFile()));
-	}
-	
-	protected Set<String> getUrlPatterns() {
-		Set<String> urlPatternsSet = new HashSet<String>();
-		urlPatternsSet.add("/*");
-		return urlPatternsSet;
 	}
 }

@@ -17,10 +17,10 @@ package net.paoding.rose.web.impl.thread;
 
 import javax.servlet.http.HttpServletRequest;
 
+import net.paoding.rose.web.impl.mapping.MappingNode;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import net.paoding.rose.web.impl.mapping.MappingNode;
 
 /**
  * 

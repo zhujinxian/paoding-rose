@@ -32,7 +32,6 @@ import net.paoding.rose.scanner.ModuleResource;
 import net.paoding.rose.scanner.ModuleResourceProvider;
 import net.paoding.rose.scanner.ModuleResourceProviderImpl;
 import net.paoding.rose.scanning.LoadScope;
-import net.paoding.rose.scanning.context.RoseWebAppContext;
 import net.paoding.rose.util.PrinteHelper;
 import net.paoding.rose.web.RequestPath;
 import net.paoding.rose.web.annotation.ReqMethod;

@@ -11,9 +11,10 @@ import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletCont
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 
-@EnableAutoConfiguration(exclude = { VelocityAutoConfiguration.class })
+//@EnableAutoConfiguration(exclude = { VelocityAutoConfiguration.class })
 public class RoseWebApplication {
 	
 	@Bean

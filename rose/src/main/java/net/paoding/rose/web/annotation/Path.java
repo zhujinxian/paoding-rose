@@ -21,6 +21,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.stereotype.Component;
+
 /**
  * 标注 {@link Path}设置对控制器的自定义映射规则。
  * 
@@ -30,6 +32,7 @@ import java.lang.annotation.Target;
 @Target( { ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@Component
 public @interface Path {
 
     /**

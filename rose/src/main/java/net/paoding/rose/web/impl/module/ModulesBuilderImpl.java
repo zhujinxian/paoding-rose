@@ -317,6 +317,12 @@ public class ModulesBuilderImpl implements ModulesBuilder {
         // 这个Controller是否已经在Context中配置了?
         // 如果使用Context配置，就不需要在这里实例化
         Object controller = context.getBean(beanName);
+        String type = context.getBeanFactory().getBeanDefinition(beanName).getBeanClassName();
+        try {
+            controller = context.getParent().getBean(Class.forName(type));
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
         module.addController(//
                 controllerPaths, clazz, controllerName, controller);
         if (Proxy.isProxyClass(controller.getClass())) {
