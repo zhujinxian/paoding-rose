@@ -11,14 +11,16 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */
-package net.paoding.rose.samples.hellorose;
+package com.zhucode.rose.sample;
 
 import net.paoding.rose.RoseConfiguration;
-import net.paoding.rose.RoseWebApplication;
+import net.paoding.rose.web.annotation.RoseSpringBootApplication;
 import net.paoding.rose.web.portal.PortalConfiguration;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.PropertyPlaceholderAutoConfiguration;
+import org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 /**
  * @author zhu jinxian
@@ -26,10 +28,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 
  */
 
-@SpringBootApplication
-public class Application extends RoseWebApplication {
+@RoseSpringBootApplication
+public class Application {
 	
 	public static void main(String[] args) {
-		SpringApplication.run(new Object[]{Application.class,  PortalConfiguration.class}, args);
-	}
+		AnnotationConfigWebApplicationContext s =null;
+		PropertyPlaceholderAutoConfiguration pa = null;
+		System.setProperty("rose-urls", "/hello/*,/m/*");
+		System.setProperty("server.port", "9000");
+
+		SpringApplication.run(new Object[]{Application.class, RoseConfiguration.class, PortalConfiguration.class}, args);
+		AnnotationConfigEmbeddedWebApplicationContext z = null;
+		System.out.println(String.class.getName());
+	}	
+	
 }
